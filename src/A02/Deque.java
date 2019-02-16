@@ -1,92 +1,104 @@
-/*
-TODO:
-Dequeue. A double-ended queue or deque (pronounced "deck") is a generalization of 
-a stack and a queue that supports inserting and removing items from either the front
-or the back of the data structure. Create a generic data type Deque that implements 
-the following API:
-
-public class Deque<Item> implements Iterable<Item> {
-   public Deque()                           // construct an empty deque
-   public boolean isEmpty()                 // is the deque empty?
-   public int size()                        // return the number of items on the deque
-   public void addFirst(Item item)          // insert the item at the front
-   public void addLast(Item item)           // insert the item at the end
-   public Item removeFirst()                // delete and return the item at the front
-   public Item removeLast()                 // delete and return the item at the end
-   public Iterator<Item> iterator()         // return an iterator over items in order from front to end
-   public static void main(String[] args)   // unit testing
-}
-Corner cases.  Throw a java.lang.NullPointerException if the client attempts to 
-add a null item; throw a java.util.NoSuchElementException if the client attempts 
-to remove an item from an empty deque; throw a java.lang.UnsupportedOperationException 
-if the client calls the remove() method in the iterator; throw a 
-java.util.NoSuchElementException if the client calls the next() method in the 
-iterator and there are no more items to return.
-
-Performance requirements.  Your deque implementation must support each deque 
-operation (including construction) in constant worst-case time and use space 
-proportional to the number of items currently in the deque. Additionally, your 
-iterator implementation must support each operation (including construction) in 
-constant worst-case time.
-
-
- */
-package A02;
+package com.company;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-/**
- *
- * @author Cody Henry
- */
-public class Deque<Item> implements Iterable<Item> {
+public class Deque<E> implements Iterable<E>
+{
 
-    /***
-     * 
-     * Construct an empty deque
-     */
-    public Deque(){
-        
+    private Node<E> head;
+    private Node<E> tail;
+    private int size;
+
+    public Deque()  //create empty deque
+    {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
     }
-    /**
-     * 
-     * @return is the deque empty?
-     */
-    public boolean isEmpty(){
-        
+
+    public boolean isEmpty() //is empty?
+    {
+        return (this.size == 0);
     }
-    /**
-     * 
-     * @return the number of items on the deque 
-     */
-    public int size(){
-        
+
+    public int size() //return number of items in on the deque
+    {
+        return this.size;
     }
-    /**
-     * 
-     * @param item insert item at the front
-     */
-    public void addFirst(Item item){
-        
+
+    public void addFirst(E item) //insert item at the front
+    {
+        if (item == null)
+        {
+            throw new NullPointerException();
+        }
+        head.setPrevious(item);
     }
-    /**
-     * @param item insert item at the end
-     */
-    public void addLast(){
-        
+
+    public void addLast(E item) //append item to the end
+    {
+        if (item == null)
+        {
+            throw new NullPointerException();
+        }
+        tail.setNext(item);
     }
-    /**
-     * 
-     * @return return an iterator over items in order from front to end
-     */
+
+    public E removeFirst() //delete and return the item at the front
+    {
+        if(size == 0)
+        {
+            throw new NoSuchElementException();
+        }
+        Node<E> temp = head;
+        head = (Node<E>) head.getNext();
+        head.setPrevious(null);
+        return temp.getItem();
+    }
+
+    public E removeLast() //delete and return the item at the front
+    {
+        if(size == 0)
+        {
+            throw new NoSuchElementException();
+        }
+        Node<E> temp = head;
+        head = (Node<E>) head.getNext();
+        head.setPrevious(null);
+        return temp.getItem();
+    }
+
     @Override
-    public Iterator<Item>iterator(){
-        
+    public Iterator<E> iterator()
+    {
+        return new dequeIterator();
     }
-    public static void main(String[] args){
-        
-        
+
+    private class dequeIterator implements Iterator<E>
+    {
+        private Node<E> current;
+
+        public dequeIterator()
+        {
+            this.current = head;
+        }
+
+
+        public boolean hasNext()
+        {
+            return (current != null && current.getNext() != null);
+        }
+
+        public E next()
+        {
+            if (current.getNext() == null)
+            {
+                throw new NoSuchElementException();
+            } else
+            {
+                return current.getNext();
+            }
+        }
     }
-    
-    
 }
