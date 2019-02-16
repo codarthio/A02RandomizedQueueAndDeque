@@ -38,14 +38,14 @@ import java.util.InputMismatchException;
  */
 public class Subset {
    public static void main(int k){
-       int count = 0;
+       
        
        RandomizedQueue<String> rq = new RandomizedQueue();
        
-       while(!StdIn.isEmpty() && count < k){
+       while(!StdIn.isEmpty()){
            try{
                rq.enqueue(StdIn.readString());
-               count++;
+               
            } catch(InputMismatchException e){
                System.out.println("Invalid Input");
            }
