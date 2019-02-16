@@ -1,4 +1,4 @@
-package com.company;
+package A02;
 
 class Node<E>
 {

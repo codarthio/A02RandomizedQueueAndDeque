@@ -65,7 +65,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
      * 
      * @return delete and return a random item
      */
-    public Item dequeue(Item item){
+    public Item dequeue(){
     	if (isEmpty()) throw new NoSuchElementException("Empty Collection");
         int indx = StdRandom.uniform(n);
         Item removed = collection[indx];
