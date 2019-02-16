@@ -28,12 +28,31 @@ limit the maximum size to k.)
  */
 package A02;
 
+
+import edu.princeton.cs.algs4.StdIn;
+import java.util.InputMismatchException;
+
 /**
  *
- * @author small_manda
+ * @author Cody Henry
  */
 public class Subset {
-   public static void main(String[] args){
+   public static void main(int k){
+       int count = 0;
+       
+       RandomizedQueue<String> rq = new RandomizedQueue();
+       
+       while(!StdIn.isEmpty() && count < k){
+           try{
+               rq.enqueue(StdIn.readString());
+               count++;
+           } catch(InputMismatchException e){
+               System.out.println("Invalid Input");
+           }
+       }
+       for(int i = 0; i < k; i++){
+           System.out.print(rq.dequeue() + "\n");
+       }
        
    }
 }
