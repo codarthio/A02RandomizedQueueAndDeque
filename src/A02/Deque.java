@@ -1,4 +1,4 @@
-package com.company;
+package A02;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -100,5 +100,9 @@ public class Deque<E> implements Iterable<E>
                 return current.getNext();
             }
         }
+    }
+    
+    public static void main(String[] args){
+        
     }
 }
