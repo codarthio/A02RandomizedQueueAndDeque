@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.lang.NullPointerException;
 import edu.princeton.cs.algs4.StdRandom; 
+import java.util.Random;
 
 /**
  *
@@ -139,6 +140,34 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     
     public static void main(String[] args){
+        RandomizedQueue<String> rq = new RandomizedQueue();
+        
+        System.out.println("Adding Elements" + System.currentTimeMillis());
+        for(int i = 0; i < 10; i++){
+       
+        rq.enqueue("" + i);
+        
+        }
+        System.out.println("Done" + System.currentTimeMillis());
+        System.out.println("Printing Elements Using For Each Loop" + System.currentTimeMillis());
+        for(String item: rq){
+            System.out.println(item);
+        }
+        System.out.println("Done" + System.currentTimeMillis());
+        
+        String item1 = rq.sample("9");
+        System.out.println(item1);
+        System.out.println("Sample Test:" + item1.equals("9"));
+        System.out.println("Removing all elements" + System.currentTimeMillis());
+        for(String itemL: rq){
+            rq.dequeue();
+           
+        }
+        System.out.println("Should be empty: ");
+        System.out.println("[" + rq + "]");
+        
+        System.out.println("Test isEmpty(), should be true: " + rq.isEmpty());
+        System.out.println("Test size(), should be 0: " + rq.size());
         
     }
 
