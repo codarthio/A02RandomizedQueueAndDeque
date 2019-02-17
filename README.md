@@ -67,11 +67,11 @@ This assignment was developed by Kevin Wayne.
 Copyright © 2005.
 
 /******************************************************************************
- *  Name:    
+ *  Name: Isaac Perry    
  *  NetID:   
  *  Precept: 
  *
- *  Partner Name:     
+ *  Partner Name: Cody Henry, Brad Robo    
  *  Partner NetID:    
  *  Partner Precept:  
  *
@@ -87,7 +87,7 @@ Programming Assignment 2: Deques and Randomized Queues
  *  Which data structure did you choose (array, linked list, etc.)
  *  and why?
  *****************************************************************************/
-
+The implementation for the randomized queue made more sense as an array of objects. This way its simple to add to the array, and implement the algorithm on arrays to avoid thrashing. For the deque we used a doubly linked list because that allowed us to easily remove and add elements to the top and bottom of the deque withouut entering into worst case linear time for removal at the end of the linked nodes. 
 
 /******************************************************************************
  *  How much memory (in bytes) do your data types use to store n items
@@ -101,9 +101,9 @@ Programming Assignment 2: Deques and Randomized Queues
  *  to the items (in the underlying array or linked list).
  *****************************************************************************/
 
-Randomized Queue:   ~  _____  bytes
+Randomized Queue:   ~  _24(array overhead) + (56(String overhead) + 2m(length of string))N _  bytes
 
-Deque:              ~  _____  bytes
+Deque:              ~  __16+16N_  bytes
 
 
 
@@ -120,7 +120,7 @@ Deque:              ~  _____  bytes
  *  classmates, and friends) and attribute them by name.
  *****************************************************************************/
 
-
+Everything that was needed to understand and complete the assignment could be pulled from reading and understanding code inside of the algs for package/textbook. Being able to look at how their iterator made multiple instances independent solved the problem quite easily. 
 
 /******************************************************************************
  *  If you worked with a partner, assert below that you followed
@@ -128,17 +128,21 @@ Deque:              ~  _____  bytes
  *  sentence explaining what each of you contributed.
  *****************************************************************************/
 
+We followed all the protocol. 
 
+Isaac Built the RandomQueue and answered the questions, Brad built the dequeue, and Cody built the Subset class. We all helped troublshoot and make sure there weren't issues with our assignment together on video chats.  
 
 /******************************************************************************
  *  Describe any serious problems you encountered.                    
  *****************************************************************************/
 
-
+We ran into some issues with getting the dequeue to work properly inside of the RandomQueue class. The issue was with an array index out of bounds because a one got subtracted in the wrong place. The code would terminate in different places because if the random number that was generated was too low the index would go out of bounds. Getting the code to run in command prompt, and making the 
 
 /******************************************************************************
  *  List any other comments here. Feel free to provide any feedback   
  *  on how much you learned from doing the assignment, and whether    
  *  you enjoyed doing it.                                             
- *****************************************************************************/
+ *****************************************************************************
+ 
+ It was really eye opening to see how building a different data structure can be so valuable to run times and capabilties of a program. If programmers were better at understanding when it would be valuable to create their own data types, code on all platforms would run more more smoothly and efficently. Overall it was a difficult assignment, but grasping how abstract the assignemnt was made for a fun challenge. 
 
