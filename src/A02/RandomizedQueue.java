@@ -72,7 +72,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         Item removed = collection[indx];
        
         
-        if (indx != n - 1) collection[n] = collection[indx - 1];
+        //if (indx != n - 1) collection[n] = collection[indx - 1];
         
         collection[--n] = null;
         
@@ -160,11 +160,13 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         System.out.println(item1);
         System.out.println("Removing all elements" + System.currentTimeMillis());
         for(String item: rq){
-            rq.dequeue();
+            System.out.println(rq.dequeue());
            
         }
         System.out.println("Should be empty: ");
-        System.out.println("[" + rq + "]");
+        for(String item: rq){
+            System.out.println(item);
+        }
         
         System.out.println("Test isEmpty(), should be true: " + rq.isEmpty());
         System.out.println("Test size(), should be 0: " + rq.size());

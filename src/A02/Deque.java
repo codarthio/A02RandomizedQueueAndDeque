@@ -14,7 +14,7 @@ public class Deque<E> implements Iterable<E>
     public Deque()  //create empty deque
     {
         E Item = (E) new Object();
-        this.head = new  Node(Item, Item);
+        this.head = null;
         this.tail = null;
         this.size = 0;
     }
@@ -106,14 +106,12 @@ public class Deque<E> implements Iterable<E>
     
     public static void main(String[] args){
         Deque<String> d = new Deque();
-        String input = "String";
-        int index = 0;
+
         Random r = new Random();
         
-        for(int i = 0; i < 1000000; i++){
-        index = r.nextInt(5);
-        if(index < 3) d.addFirst(""+input.charAt(index));
-        else d.addLast("" + input.charAt(index));
+        for(int i = 0; i < 10; i++){
+        
+       
         }
         for(String item: d){
             System.out.print(item);
