@@ -1,7 +1,8 @@
-package com.company;
+package A02;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 public class Deque<E> implements Iterable<E>
 {
@@ -12,6 +13,7 @@ public class Deque<E> implements Iterable<E>
 
     public Deque()  //create empty deque
     {
+        E Item = (E) new Object();
         this.head = null;
         this.tail = null;
         this.size = 0;
@@ -99,6 +101,20 @@ public class Deque<E> implements Iterable<E>
             {
                 return current.getNext();
             }
+        }
+    }
+    
+    public static void main(String[] args){
+        Deque<String> d = new Deque();
+
+        Random r = new Random();
+        
+        for(int i = 0; i < 10; i++){
+        
+       
+        }
+        for(String item: d){
+            System.out.print(item);
         }
     }
 }
