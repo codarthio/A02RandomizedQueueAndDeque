@@ -37,9 +37,14 @@ import java.util.InputMismatchException;
  * @author Cody Henry
  */
 public class Subset {
-   public static void main(int k){
+   public static void main(String[] args){
+       int k = 0;
        
-       
+       try{
+       k = Integer.parseInt(args[0]);
+       }catch(InputMismatchException e){
+           System.err.print("Error");
+       }
        RandomizedQueue<String> rq = new RandomizedQueue();
        
        while(!StdIn.isEmpty()){
