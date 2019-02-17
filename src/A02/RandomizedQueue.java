@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.lang.NullPointerException;
 import edu.princeton.cs.algs4.StdRandom; 
+import java.util.Random;
 
 /**
  *
@@ -65,7 +66,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
      * 
      * @return delete and return a random item
      */
-    public Item dequeue(Item item){
+    public Item dequeue(){
     	if (isEmpty()) throw new NoSuchElementException("Empty Collection");
         int indx = StdRandom.uniform(n);
         Item removed = collection[indx];
@@ -89,7 +90,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
      * 
      * @return return (but do not delete) a random item
      */
-    public Item sample(Item item){
+    public Item sample(){
     	 if (isEmpty()) throw new NoSuchElementException("Empty Collection");
          return(collection[StdRandom.uniform(n)]); 
     }
@@ -129,6 +130,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext()) throw new java.util.NoSuchElementException();
             int indx = StdRandom.uniform(n2);
+            System.out.println("Iterator: " + n2);
             Item ans = temp[indx];
             if (indx != n2 - 1) temp[indx] = temp[n2 - 1];
             temp[--n2] = null;
@@ -139,6 +141,33 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     
     public static void main(String[] args){
+        RandomizedQueue<String> rq = new RandomizedQueue();
+        
+        System.out.println("Adding Elements " + System.currentTimeMillis());
+        for(int i = 0; i < 10; i++){
+       
+        rq.enqueue("" + i);
+        
+        }
+        System.out.println("Done" + System.currentTimeMillis());
+        System.out.println("Printing Elements Using For Each Loop " + System.currentTimeMillis());
+        for(String item: rq){
+            System.out.println(item);
+        }
+        System.out.println("Done" + System.currentTimeMillis());
+        
+        String item1 = rq.sample();
+        System.out.println(item1);
+        System.out.println("Removing all elements" + System.currentTimeMillis());
+        for(String item: rq){
+            rq.dequeue();
+           
+        }
+        System.out.println("Should be empty: ");
+        System.out.println("[" + rq + "]");
+        
+        System.out.println("Test isEmpty(), should be true: " + rq.isEmpty());
+        System.out.println("Test size(), should be 0: " + rq.size());
         
     }
 
