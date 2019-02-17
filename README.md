@@ -71,7 +71,7 @@ Copyright © 2005.
  *  NetID:   
  *  Precept: 
  *
- *  Partner Name: Cody Henry, Brad Robo    
+ *  Partner Name: Cody Henry, Brad Rohbock, Isaac Perry   
  *  Partner NetID:    
  *  Partner Precept:  
  *
