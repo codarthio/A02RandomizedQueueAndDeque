@@ -39,6 +39,7 @@ import java.util.InputMismatchException;
 public class Subset {
    public static void main(String[] args){
        int k = 0;
+       
        try{
        k = Integer.parseInt(args[0]);
        }catch(InputMismatchException e){
