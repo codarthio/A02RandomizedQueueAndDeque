@@ -90,7 +90,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
      * 
      * @return return (but do not delete) a random item
      */
-    public Item sample(Item item){
+    public Item sample(){
     	 if (isEmpty()) throw new NoSuchElementException("Empty Collection");
          return(collection[StdRandom.uniform(n)]); 
     }
@@ -130,6 +130,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         public Item next() {
             if (!hasNext()) throw new java.util.NoSuchElementException();
             int indx = StdRandom.uniform(n2);
+            System.out.println("Iterator: " + n2);
             Item ans = temp[indx];
             if (indx != n2 - 1) temp[indx] = temp[n2 - 1];
             temp[--n2] = null;
@@ -142,24 +143,23 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public static void main(String[] args){
         RandomizedQueue<String> rq = new RandomizedQueue();
         
-        System.out.println("Adding Elements" + System.currentTimeMillis());
+        System.out.println("Adding Elements " + System.currentTimeMillis());
         for(int i = 0; i < 10; i++){
        
         rq.enqueue("" + i);
         
         }
         System.out.println("Done" + System.currentTimeMillis());
-        System.out.println("Printing Elements Using For Each Loop" + System.currentTimeMillis());
+        System.out.println("Printing Elements Using For Each Loop " + System.currentTimeMillis());
         for(String item: rq){
             System.out.println(item);
         }
         System.out.println("Done" + System.currentTimeMillis());
         
-        String item1 = rq.sample("9");
+        String item1 = rq.sample();
         System.out.println(item1);
-        System.out.println("Sample Test:" + item1.equals("9"));
         System.out.println("Removing all elements" + System.currentTimeMillis());
-        for(String itemL: rq){
+        for(String item: rq){
             rq.dequeue();
            
         }
